@@ -1,0 +1,117 @@
+<div class="stepInnerViewContainer" layout="column" layout-align="start start">
+  <md-content layout-padding style="width:100%;">
+    <md-subheader class="md-primary">Select Project Type</md-subheader>
+    <div class="projectTypeHolder" layout="row" layout-align="center center">
+      <md-button class="projectTypeSelection md-primary" ng-click="selectProjectType('application')">
+        <div class="projectTypeSeclectionInner" layout="column" layout-align="center center">
+          <img src="views/images/math-compass.png" width="128" height="128"/>
+          <span>Application</span>
+        </div>
+      </md-button>
+      <md-button class="projectTypeSelection md-primary" ng-click="selectProjectType('smoothflow')">
+        <div class="projectTypeSeclectionInner" layout="column" layout-align="center center">
+          <img src="views/images/smooth-flow.png" width="128" height="128" style="opacity:0.35;"/>
+          <span>Smoothflow</span>
+        </div>
+      </md-button>
+      <md-button class="projectTypeSelection md-primary" ng-click="selectProjectType('bundle')">
+        <div class="projectTypeSeclectionInner" layout="column" layout-align="center center">
+          <img src="views/images/package-variant-closed.png" width="128" height="128"/>
+          <span>Bundle</span>
+        </div>
+      </md-button>
+    </div>
+    <div ng-show="typeOptionSelect" ng-switch on="projectState.pdparams.templates.category" class="projectTypeSpecificOptions">
+      <div class="typeOption" ng-switch-default>
+        <md-subheader class="md-primary">Application Project Options</md-subheader>
+        <md-input-container class="md-block">
+           <label>Type</label>
+           <md-select name="selectApplicationSubType" ng-model="selectApplicationType" required>
+             <md-option value="duoworld_SDK">DuoWorld SDK Application</md-option>
+             <md-option value="custom_HTML5">Custom HTML5 Application</md-option>
+           </md-select>
+           <div class="errors" ng-messages=".$error" ng-if="myForm.$dirty">
+             <div ng-message="required">Required</div>
+           </div>
+        </md-input-container>
+       <div ng-switch on="selectApplicationType" class="applicationTypeSpecificOptions">
+         <div class="typeSpecificSourceContainer" ng-switch-when="duoworld_SDK">
+           <md-subheader class="md-primary subOptionsHeader">Use a predefined template.</md-subheader>
+           <div class="sourceSelectionOptionsSection" layout="column" layout-align="start start">
+             <div class="sourceSectionCommon templateSection" layout="row" layout-align="start start">
+               <md-button flex="50" class="md-primary" ng-click="selectedTemplate('AngularMaterial')">
+                 <div layout="column" layout-align="center center">
+                   <img src="views/images/angularmaterial.png" width="128" height="128" style="padding:10px;"/>
+                   <span>Angular Material<span>
+                 </div>
+               </md-button>
+               <md-button flex="50" class="md-primary" ng-click="selectedTemplate('AngularBootstrap')">
+                 <div layout="column" layout-align="center center">
+                   <img src="views/images/bootstrap.png" width="128" height="128" style="padding:10px;"/>
+                   <span>Bootstrap<span>
+                 </div>
+               </md-button>
+             </div>
+             <div class="sourceSectionCommon fileuploadSection">
+               <md-subheader class="md-primary subOptionsHeader">Upload a file.</md-subheader>
+               <lf-ng-md-file-input lf-files="files"></lf-ng-md-file-input>
+             </div>
+           </div>
+         </div>
+         <div class="typeSpecificSourceContainer" ng-switch-when="custom_HTML5">
+           <md-subheader class="md-primary subOptionsHeader">Use a predefined template.</md-subheader>
+           <div class="sourceSelectionOptionsSection" layout="column" layout-align="start start">
+             <div class="sourceSectionCommon templateSection" layout="row" layout-align="start start">
+               <md-button flex="100" class="md-primary" ng-click="selectedTemplate('HTML5 Starter')">
+                 <div layout="column" layout-align="center center">
+                   <img src="views/images/html5.png" width="128" height="128" style="padding:10px;"/>
+                   <span>HTML5 Starter<span>
+                 </div>
+               </md-button>
+             </div>
+             <div class="sourceSectionCommon fileuploadSection">
+               <md-subheader class="md-primary subOptionsHeader">Upload a file.</md-subheader>
+               <lf-ng-md-file-input lf-files="files"></lf-ng-md-file-input>
+             </div>
+           </div>
+         </div>
+       </div>
+      </div>
+      <div class="typeOption" ng-switch-when="smoothflow">
+        <md-subheader class="md-primary">Smoothflow Project Options</md-subheader>
+        <md-input-container class="md-block">
+           <label>Type</label>
+           <md-select name="selectSmoothFlowSubType" ng-model="selectSmoothflowType" required>
+             <md-option value="smoothflow_ACTIVITY">Smoothflow Activity</md-option>
+           </md-select>
+           <div class="errors" ng-messages=".$error" ng-if="myForm.$dirty">
+             <div ng-message="required">Required</div>
+           </div>
+        </md-input-container>
+        <div ng-switch on="selectSmoothflowType" class="applicationTypeSpecificOptions">
+          <div class="typeSpecificSourceContainer" ng-switch-when="smoothflow_ACTIVITY">
+            <md-subheader class="md-primary subOptionsHeader">Use a predefined template.</md-subheader>
+            <div class="sourceSelectionOptionsSection" layout="column" layout-align="start start">
+              <div class="sourceSectionCommon templateSection" layout="row" layout-align="start start">
+                <md-button flex="100" class="md-primary" ng-click="selectedTemplate('SmoothflowActivity')">
+                  <div layout="column" layout-align="center center">
+                    <img src="views/images/smooth-flow-color.png" width="128" height="128" style="padding:10px;"/>
+                    <span>Smoothflow Sample Activity<span>
+                  </div>
+                </md-button>
+              </div>
+              <div class="sourceSectionCommon fileuploadSection">
+                <md-subheader class="md-primary subOptionsHeader">Upload a file.</md-subheader>
+                <lf-ng-md-file-input lf-files="files"></lf-ng-md-file-input>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="typeOption" ng-switch-when="bundle">
+        <md-subheader class="md-primary">Bundle Project Options</md-subheader>
+      </div>
+
+    </div>
+  </md-content>
+</div>

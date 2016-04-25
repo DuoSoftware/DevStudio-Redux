@@ -1,0 +1,33 @@
+<div class="stepInnerViewContainer" layout="column" layout-align="start start">
+  <md-content layout-padding style="width:100%;">
+    <md-subheader class="md-primary">Specify Project Details</md-subheader>
+    <md-input-container class="md-block">
+      <label>Title</label>
+      <input ng-model="projectState.pdparams.description.title" ng-blur="getKeys()">
+    </md-input-container>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Project Key</label>
+        <input ng-model="projectState.pdparams.description.appKey" disabled>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Secret Key</label>
+        <input ng-model="projectState.pdparams.description.secretKey" disabled>
+      </md-input-container>
+    </div>
+    <lf-ng-md-file-input style="margin-bottom:30px;" lf-files="files05" lf-browse-label="Upload Image" lf-placeholder="Pick Image" lf-remove-label="Delete" lf-drag-and-drop-label="Drag and drop your project image here !" drag preview></lf-ng-md-file-input>
+    <md-input-container class="md-block">
+       <label>Category</label>
+       <md-select name="selectProjectCategory" ng-model="projectState.pdparams.templates.category" required>
+         <md-option ng-repeat="category in appCategories" value="{{category}}">{{category}}</md-option>
+       </md-select>
+       <div class="errors" ng-messages=".$error" ng-if="myForm.$dirty">
+         <div ng-message="required">Required</div>
+       </div>
+    </md-input-container>
+    <md-input-container class="md-block">
+      <label>Project Description</label>
+      <textarea ng-model="projectState.pdparams.description.description" md-maxlength="300" rows="5" md-select-on-focus></textarea>
+    </md-input-container>
+  </md-content>
+</div>

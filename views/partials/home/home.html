@@ -1,0 +1,133 @@
+<div class="view_container">
+	<div class="view_App_wrapper" layout="column" layout-align="start start">
+		<div class="view_Header_section" layout="column" layout-align="center center">
+			<div class="header_Control_container md-whiteframe-6dp" layout="row" layout-align="start start">
+				<div class="search_field">
+					<md-input-container md-no-float class="md-block" style="margin-top:3px !important;">
+			      <md-icon md-svg-src="icons/ic_search_24px.svg" style="margin-left:5px; fill:rgba(0,0,0,0.54);"></md-icon>
+			      <input ng-model="searchProjects" type="text" placeholder="search project inventory" style="border:none !important;">
+			    </md-input-container>
+				</div>
+				<div class="control_section" layout="column" layout-align="center start">
+					<md-menu>
+						<md-button aria-label="Inventory Filter" ng-click="openInventoryAppActions($mdOpenMenu, $event)">
+								<md-icon md-svg-icon="icons/ic_sort_24px.svg" alt="Inventory Filter"></md-icon>
+						</md-button>
+						<md-menu-content md-menu-origin width="4">
+							<md-menu-item>
+								<md-button ng-click="filterInventory('recent_projects')">
+									<md-icon md-svg-icon="icons/ic_today_24px.svg" md-menu-align-target></md-icon>
+									Recent
+								</md-button>
+							</md-menu-item>
+							<md-menu-item>
+								<md-button ng-click="filterInventory('published_projects')">
+									<md-icon md-svg-icon="icons/ic_stars_24px.svg" md-menu-align-target></md-icon>
+									Published
+								</md-button>
+							</md-menu-item>
+							<md-menu-item>
+								<md-button ng-click="filterInventory('verified_projects')">
+									<md-icon md-svg-icon="icons/ic_verified_user_24px.svg" md-menu-align-target></md-icon>
+									Verified
+								</md-button>
+							</md-menu-item>
+							<md-menu-item>
+								<md-button ng-click="filterInventory('indevelopment_projects')">
+									<md-icon md-svg-icon="icons/ic_settings_ethernet_24px.svg" md-menu-align-target></md-icon>
+									Indevelopment
+								</md-button>
+							</md-menu-item>
+						</md-menu-content>
+					</md-menu>
+				</div>
+				<!-- <md-autocomplete flex="" required md-input-name="autocompleteField"
+            md-no-cache="noCache"
+            md-selected-item="selectedItem"
+            md-search-text="searchText"
+            md-items="item in querySearch(searchText)"
+            md-item-text="item.display"
+            md-floating-label="Projects">
+            <md-item-template>
+               <span  md-highlight-text="searchText">{{item.display}}</span>
+            </md-item-template>
+            <div ng-messages="searchForm.autocompleteField.$error" ng-if="searchForm.autocompleteField.$touched">
+               <div ng-message="required">You
+                  <b>must</b> have a favorite state.
+               </div>
+               <div ng-message="minlength">Your entry is not long enough.</div>
+               <div ng-message="maxlength">Your entry is too long.</div>
+            </div>
+         </md-autocomplete> -->
+			</div>
+		</div>
+		<div class="view_Content_section">
+			<md-content class="custom_md-content md-padding" layout="row" layout-wrap>
+				<div ng-animate="" ng-repeat="project in projects | filter:searchProjects" class="app-inventory-card" flex-sm="50" flex-gt-sm="33" flex-gt-lg="25" layout="column">
+					<!-- <div applicationinventory-card appdata="app"></div> -->
+					<md-card>
+						<div class="ImageContainer" style="background-color:#607D8B; box-sizing:border-box;">
+							<img ng-src="appicons/{{project.appKey}}.png" color-thief color-thief-dominant="colors.myDominantColor" class="appCardIconImage" alt="{{app.appTitle}}" width="128" height="128">
+							<md-button class="appProjectInfoBtn md-fab md-mini md-primary" aria-label="App Info" ng-click="navigateProjectInfo(project)">
+									<md-icon md-svg-icon="icons/ic_info_outline_24px.svg" alt="App Info" style="fill:#fff;"></md-icon>
+							</md-button>
+						</div>
+						<md-card-title>
+					    <md-card-title-text class="projectTitleInformationSection" layout="column" layout-align="start start">
+					      	<span class="md-headline">{{project.name}}</span>
+							<span class="md-sub-head">{{project.appKey}}</span>
+					    </md-card-title-text>
+						<md-menu>
+							<md-button aria-label="Application Actions" ng-click="openInventoryAppActions($mdOpenMenu, $event)">
+									<md-icon md-svg-icon="icons/ic_more_vert_24px.svg" alt="Actions"></md-icon>
+							</md-button>
+							<md-menu-content md-menu-origin width="4">
+								<md-menu-item>
+									<md-button ng-click="download(project)">
+										<md-icon md-svg-icon="icons/ic_file_download_24px.svg" md-menu-align-target></md-icon>
+										Download
+									</md-button>
+								</md-menu-item>
+								<md-menu-item>
+									<md-button ng-click="edit(project)">
+										<md-icon md-svg-icon="icons/ic_bug_report_24px.svg" md-menu-align-target></md-icon>
+										Edit Project Source
+									</md-button>
+								</md-menu-item>
+								<md-menu-item>
+									<md-button ng-click="run(project)">
+										<md-icon md-svg-icon="icons/ic_play_circle_outline_24px.svg" md-menu-align-target></md-icon>
+										Run
+									</md-button>
+								</md-menu-item>
+								<md-menu-item>
+									<md-button ng-click="share(project)">
+										<md-icon md-svg-icon="icons/ic_group_add_24px.svg" md-menu-align-target></md-icon>
+										Add Collaborators
+									</md-button>
+								</md-menu-item>
+								<md-menu-item>
+									<md-button ng-click="delete(project)">
+										<md-icon md-svg-icon="icons/ic_delete_24px.svg" md-menu-align-target></md-icon>
+										Delete
+									</md-button>
+								</md-menu-item>
+								<md-menu-divider></md-menu-divider>
+								<md-menu-item>
+									<md-button ng-click="publish(project)">
+										<md-icon md-svg-icon="icons/ic_cloud_upload_24px.svg" md-menu-align-target></md-icon>
+										Publish
+									</md-button>
+								</md-menu-item>
+							</md-menu-content>
+						</md-menu>
+					  </md-card-title>
+					  <md-card-content>
+							<div hm-read-more hm-text="{{project.description}}" hm-limit="100" hm-more-text="expand" hm-less-text="less" hm-dots-class="toggle-dots-grey" hm-link-class="toggle-link-yellow"></div>
+					  </md-card-content>
+					</md-card>
+				<div>
+			</md-content>
+		</div>
+	</div>
+</div>

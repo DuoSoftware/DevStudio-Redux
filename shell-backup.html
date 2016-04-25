@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html manifest="DuoWorld Dev Studio v1.0.0.0" xmlns='http://www.w3.org/1999/xhtml' xmlns:v="urn:schemas-microsoft-com:vml" lang="en">
+
+<head>
+    <title>DuoWord DevStudio</title>
+    <link rel="shortcut icon" href="images/smoothflow-icon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/colorifyjs/styles/colorify.css">
+		<link rel="stylesheet" type="text/css" href="views/styles/main.css" />
+    <link rel="stylesheet" type="text/css" href="views/styles/directiveStyling.css" />
+		<link rel="stylesheet" type="text/css" href="views/styles/refactoredStyles.css" />
+		<link rel="stylesheet" type="text/css" href="views/styles/tree-control.css">
+		<link rel="stylesheet" type="text/css" href="views/styles/tree-control-attribute.css">
+</head>
+
+<body ng-app="shellApp" ng-controller="shellController" layout="row" layout-fill flex>
+
+    <!--fixed side navigation-->
+    <!--end of fixed side navigation-->
+
+    <!--main container-->
+    <section layout="column" class="relative" layout-fill role="main" style="z-index:1;">
+        <md-content flex>
+
+            <!--side toolbar start-->
+            <div id="toolboxControl" class="panel-show-hide">
+                <div id="toolboxheader">
+                    <md-toolbar md-theme="{{theme}}" md-theme-watch style="min-height:48px !important box-shadow: none;">
+                        <div layout="row" style="height:48px">
+                            <div flex="80">
+                                <h1 class="md-toolbar-tools" style="height:48px">Toolbox</h1>
+                            </div>
+                            <div flex="20" layout="column" layout-align="center center">
+                                <md-button md-theme="{{theme}}" md-theme-watch ng-click="closeBox()">
+                                    <ng-md-icon id="settingsicon" icon="arrow_back" class="mainsvg" size="24"></ng-md-icon>
+                                </md-button>
+                            </div>
+                        </div>
+                    </md-toolbar>
+                </div>
+                <div id="toolboxcontent" ng-scrollbars ng-scrollbars-config="scrollbarconfig">
+                    <md-input-container md-theme="{{theme}}" md-theme-watch style="padding: 10px; padding-top: 0px;">
+                        <label>Search Toolbox</label>
+                        <input ng-model="toolboxsearch">
+                    </md-input-container>
+
+                    <md-list>
+                        <md-list-item class="md-2-line" ng-repeat="item in menu">
+                            <ng-md-icon id="settingsicon" icon="create" class="mainsvg" size="24"></ng-md-icon>
+                            <div class="md-list-item-text">
+                                <h3> {{ item.title }} </h3>
+                                <p> {{ item.title }} </p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+
+                </div>
+            </div>
+            <!--side toolbar end-->
+
+            <div id="container" class="container" layout-align="center center" ui-view></div>
+        </md-content>
+    </section>
+    <!--end of main container-->
+
+    <!-- dashboad start-->
+    <div layout="row" layout-align="center center" id="dashboardpageStarter" ng-if="dashboardVisible" style="background-color:{{$root.primaryColor}}">
+    </div>
+    <div id="dashboardpage" layout="column" layout-align="center center" ng-if="dashboardpageVisible">
+        <!-- your template goes here-->
+        <div ng-include="'partials/dashboard-template.html'" class="full-width-height"></div>
+    </div>
+    <!--dashboad finish-->
+		<script type="text/javascript">window.devportal = {partials:{}};</script>
+
+		<script type="text/javascript" src="/runtime_profiles/environ.js"></script>
+
+		<script type="text/javascript" src="views/js/less.min.js"></script>
+
+		<script type="text/javascript" src="views/js/filetypes.min.js"></script>
+
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="bower_components/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+    <script type="text/javascript" src="views/js/color-thief.js"></script>
+    <script type="text/javascript" src="views/js/coloradapter.js"></script>
+    <script type="text/javascript" src="views/js/angular-tree-control.js"></script>
+
+    <!-- <script type="text/javascript" src="js/app.js"></script> -->
+    <script type="text/javascript" src="views/js/readmoredirective.js"></script>
+
+		<script type="text/javascript" src="views/js/ace/ace.js"></script>
+		<script type="text/javascript" src="views/js/ace/ext-modelist.js"></script>
+		<script type="text/javascript" src="views/js/ace/ext-language_tools.js"></script>
+		<script type="text/javascript" src="views/js/ui-ace.min.js"></script>
+
+		<script type="text/javascript" src="views/js/mousetrap.min.js"></script>
+		<script type="text/javascript" src="views/js/hotkeys.js"></script>
+
+		<script type="text/javascript" src="/uimicrokernel/uimicrokernel.js"></script>
+		<script type="text/javascript" src="views/js-core/proxy.js"></script>
+
+		<script type="text/javascript" src="views/partials/home/home.js"></script>
+		<script type="text/javascript" src="views/partials/create/create.js"></script>
+		<script type="text/javascript" src="views/partials/edit/edit.js"></script>
+		<script type="text/javascript" src="views/partials/run/run.js"></script>
+		<script type="text/javascript" src="views/partials/test/test.js"></script>
+		<script type="text/javascript" src="views/partials/publish/publish.js"></script>
+		<script type="text/javascript" src="views/partials/share/share.js"></script>
+		<script type="text/javascript" src="views/partials/desc/desc.js"></script>
+		<script type="text/javascript" src="views/partials/newfile/newfile.js"></script>
+		<script type="text/javascript" src="views/partials/newsnippet/newsnippet.js"></script>
+		<script type="text/javascript" src="views/partials/bundle/bundle.js"></script>
+		<script type="text/javascript" src="views/js-core/shell.js"></script>
+</body>
+
+</html>
+
+<!--
+<html>
+	<head>
+	    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    	<title>DuoWorld DevStudio</title>
+    	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+			<link rel="stylesheet" type="text/css" href="views/styles/main.css" />
+			<link rel="stylesheet" type="text/css" href="views/styles/tree-control.css">
+			<link rel="stylesheet" type="text/css" href="views/styles/tree-control-attribute.css">
+			<link rel="stylesheet" type="text/css" href="views/styles/angular-material.css">
+			<link rel="stylesheet" type="text/css" href="views/styles/angular-material-icons.css">
+	</head>
+	<body ng-app="shellApp" ng-controller="shellController">
+		<div style="height:100%;width:100%;" ui-view></div>
+		<div ng-show="isBusy" style="position:fixed;left:50%;top:50%;margin-left:-50px;margin-top:-50px;height:100;width:100px;">
+		    <md-progress-circular md-mode="indeterminate" md-diameter="96"></md-progress-circular>
+		</div>
+
+		<md-fab-speed-dial md-direction="up" ng-class="selectedMode" layout-align="bottom right" style="position:fixed;top:100%;left:100%;margin-left:-80px;margin-top:-180px;">
+			<md-fab-trigger>
+			  <md-button aria-label="menu" class="md-fab md-warn">
+			    <md-icon><ng-md-icon icon="menu" size="24"></ng-md-icon></md-icon>
+			  </md-button>
+			</md-fab-trigger>
+
+			<md-fab-actions>
+			  <md-button class="md-fab md-primary md-mini" ng-click="navigate('home')">
+				<md-icon><ng-md-icon icon="home" size="24"></ng-md-icon></md-icon>
+				<md-tooltip>Home</md-tooltip>
+			  </md-button>
+			  <md-button class="md-fab md-primary md-mini" ng-click="navigate('create')">
+				<md-icon><ng-md-icon icon="create" size="24"></ng-md-icon></md-icon>
+				<md-tooltip>Create</md-tooltip>
+			  </md-button>
+			</md-fab-actions>
+		</md-fab-speed-dial>
+		<script type="text/javascript">window.devportal = {partials:{}};</script>
+
+		<script type="text/javascript" src="/runtime_profiles/environ.js"></script>
+
+		<script type="text/javascript" src="views/js/less.min.js"></script>
+
+		<script type="text/javascript" src="views/js/filetypes.min.js"></script>
+
+		<script type="text/javascript" src="views/js/angular.min.js"></script>
+		<script type="text/javascript" src="views/js/angular-ui-router.min.js"></script>
+		<script type="text/javascript" src="views/js/angular-tree-control.js"></script>
+		<script type="text/javascript" src="views/js/angular-material-icons.min.js"></script>
+
+		<script type="text/javascript" src="views/js/angular-aria.min.js"></script>
+		<script type="text/javascript" src="views/js/angular-animate.min.js"></script>
+		<script type="text/javascript" src="views/js/angular-material.min.js"></script>
+
+		<script type="text/javascript" src="views/js/ace/ace.js"></script>
+		<script type="text/javascript" src="views/js/ace/ext-modelist.js"></script>
+		<script type="text/javascript" src="views/js/ace/ext-language_tools.js"></script>
+		<script type="text/javascript" src="views/js/ui-ace.min.js"></script>
+
+		<script type="text/javascript" src="views/js/mousetrap.min.js"></script>
+		<script type="text/javascript" src="views/js/hotkeys.js"></script>
+
+		<script type="text/javascript" src="/uimicrokernel/uimicrokernel.js"></script>
+		<script type="text/javascript" src="views/js-core/proxy.js"></script>
+
+		<script type="text/javascript" src="views/partials/home/home.js"></script>
+		<script type="text/javascript" src="views/partials/create/create.js"></script>
+		<script type="text/javascript" src="views/partials/edit/edit.js"></script>
+		<script type="text/javascript" src="views/partials/run/run.js"></script>
+		<script type="text/javascript" src="views/partials/test/test.js"></script>
+		<script type="text/javascript" src="views/partials/publish/publish.js"></script>
+		<script type="text/javascript" src="views/partials/share/share.js"></script>
+		<script type="text/javascript" src="views/partials/desc/desc.js"></script>
+		<script type="text/javascript" src="views/partials/newfile/newfile.js"></script>
+		<script type="text/javascript" src="views/partials/newsnippet/newsnippet.js"></script>
+		<script type="text/javascript" src="views/partials/bundle/bundle.js"></script>
+
+		<script type="text/javascript" src="views/js-core/shell.js"></script>
+	</body>
+</html>
+-->

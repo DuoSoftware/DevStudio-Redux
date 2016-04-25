@@ -1,0 +1,42 @@
+<md-dialog aria-label="Edit project info" ng-cloak>
+  <form name="projectinfoupdate">
+    <md-dialog-content class="projectInfoEditContainer">
+      <div class="md-dialog-content">
+        <lf-ng-md-file-input style="margin-bottom:30px;" lf-files="files05" lf-browse-label="Browse" lf-placeholder="Pick Image" lf-remove-label="Delete" lf-drag-and-drop-label="drop your new project image here !" drag preview>
+        </lf-ng-md-file-input>
+        <md-input-container class="md-block">
+          <input required id="Title" type="text" name="Title" placeholder="Project Title" ng-model="appDesc.name">
+        </md-input-container> 
+        <md-input-container class="md-block">
+           <label>Project Category</label>
+           <md-select name="selectProjectCategory" ng-model="appDesc.category" required>
+             <md-option ng-repeat="category in appCategories" value="{{category}}">{{category}}</md-option>
+           </md-select>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Project Description</label>
+          <textarea ng-model="appDesc.description" md-maxlength="300" rows="5" md-select-on-focus></textarea>
+        </md-input-container>  
+        <div layout="row">
+          <md-input-container class="md-block" flex="33">
+            <input required id="versionMajor" type="text" name="versionMajor" placeholder="major" ng-model="appDesc.version.major">
+          </md-input-container>
+          <md-input-container class="md-block" flex="33">
+            <input required id="versionMinor" type="text" name="versionMinor" placeholder="minor" ng-model="appDesc.version.minor">
+          </md-input-container>
+          <md-input-container class="md-block" flex="33">
+            <input required id="versionRelease" type="text" name="versionRelease" placeholder="release" ng-model="appDesc.version.release">
+          </md-input-container>
+        </div>        
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="md-accent" ng-click="answer('not useful')">
+        cancel
+      </md-button>
+      <md-button class="md-primary" ng-click="answer('useful')" style="margin-right:20px;">
+        save changes
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -1,0 +1,64 @@
+<md-fab-actions class="md-toolbar-tools">
+  <md-button class="md-icon-button" ng-click="sessions.current().save()">
+    <md-icon><ng-md-icon icon="save" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Save</md-tooltip>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="sessions.saveAll()">
+    <md-icon>
+      <img src="./views/images/saveall.png"/>
+    </md-icon>
+    <md-tooltip>Save All</md-tooltip>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="sessions.current().undo()">
+    <md-icon><ng-md-icon icon="undo" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Undo</md-tooltip>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="sessions.current().redo()">
+    <md-icon><ng-md-icon icon="redo" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Redo</md-tooltip>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="sessions.current().cut()">
+    <md-icon><ng-md-icon icon="content_cut" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Cut</md-tooltip>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="sessions.current().copy()">
+    <md-icon><ng-md-icon icon="content_copy" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Copy</md-tooltip>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="sessions.current().paste()">
+    <md-icon><ng-md-icon icon="content_paste" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Paste</md-tooltip>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="sessions.current().snippet()">
+    <md-icon><ng-md-icon icon="note_add" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Code Snippets</md-tooltip>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="project.run()">
+    <md-icon><ng-md-icon icon="play_circle_outline" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Run</md-tooltip>
+  </md-button>
+  <!--md-button class="md-icon-button" ng-click="project.publish()">
+    <md-icon><ng-md-icon icon="bug_report" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Debug</md-tooltip>
+  </md-button-->
+
+  <md-button class="md-icon-button" ng-click="project.publish()">
+    <md-icon><ng-md-icon icon="cloud_upload" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Publish</md-tooltip>
+  </md-button>
+
+  <md-button class="md-icon-button" ng-click="project.share()">
+    <md-icon><ng-md-icon icon="recent_actors" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Share</md-tooltip>
+  </md-button>
+
+  <md-button class="md-icon-button" ng-click="project.editDescription()">
+    <md-icon><ng-md-icon icon="description" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Edit Description</md-tooltip>
+  </md-button>
+
+  <md-button class="md-icon-button" ng-click="openNewTab()">
+    <md-icon><ng-md-icon icon="open_in_new" size="32"></ng-md-icon></md-icon>
+    <md-tooltip>Open in New Tab</md-tooltip>
+  </md-button>
+</md-fab-actions>

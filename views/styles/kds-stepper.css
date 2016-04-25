@@ -1,0 +1,325 @@
+/*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+Copyright (c) 2015 Daniel Eden
+*/
+body {
+  -webkit-backface-visibility: hidden; }
+
+.animated, kds-stepper kds-steps-message.ng-enter, kds-stepper kds-steps-message.ng-leave, kds-stepper kds-step-loading.ng-enter, kds-stepper kds-step-loading.ng-leave {
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both; }
+  .animated.infinite, kds-stepper kds-steps-message.infinite.ng-enter, kds-stepper kds-steps-message.infinite.ng-leave, kds-stepper kds-step-loading.infinite.ng-enter, kds-stepper kds-step-loading.infinite.ng-leave {
+    animation-iteration-count: infinite; }
+  .animated.hinge, kds-stepper kds-steps-message.hinge.ng-enter, kds-stepper kds-steps-message.hinge.ng-leave, kds-stepper kds-step-loading.hinge.ng-enter, kds-stepper kds-step-loading.hinge.ng-leave {
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -o-animation-duration: 2s;
+    animation-duration: 2s; }
+  .animated.bounceIn, kds-stepper kds-steps-message.bounceIn.ng-enter, kds-stepper kds-steps-message.bounceIn.ng-leave, kds-stepper kds-step-loading.bounceIn.ng-enter, kds-stepper kds-step-loading.bounceIn.ng-leave, .animated.bounceOut, kds-stepper kds-steps-message.bounceOut.ng-enter, kds-stepper kds-steps-message.bounceOut.ng-leave, kds-stepper kds-step-loading.bounceOut.ng-enter, kds-stepper kds-step-loading.bounceOut.ng-leave {
+    -webkit-animation-duration: 0.75s;
+    -moz-animation-duration: 0.75s;
+    -o-animation-duration: 0.75s;
+    animation-duration: 0.75s; }
+  .animated.flipOutX, kds-stepper kds-steps-message.flipOutX.ng-enter, kds-stepper kds-steps-message.flipOutX.ng-leave, kds-stepper kds-step-loading.flipOutX.ng-enter, kds-stepper kds-step-loading.flipOutX.ng-leave, .animated.flipOutY, kds-stepper kds-steps-message.flipOutY.ng-enter, kds-stepper kds-steps-message.flipOutY.ng-leave, kds-stepper kds-step-loading.flipOutY.ng-enter, kds-stepper kds-step-loading.flipOutY.ng-leave {
+    -webkit-animation-duration: 0.75s;
+    -moz-animation-duration: 0.75s;
+    -o-animation-duration: 0.75s;
+    animation-duration: 0.75s; }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  -o-animation-name: fadeIn;
+  animation-name: fadeIn; }
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0); } }
+
+@-moz-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(20px); }
+  100% {
+    opacity: 1;
+    -moz-transform: translateY(0); } }
+
+@-o-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -o-transform: translateY(20px); }
+  100% {
+    opacity: 1;
+    -o-transform: translateY(0); } }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+.fadeInUp, kds-stepper kds-steps-message.ng-enter, kds-stepper kds-step-loading.ng-enter {
+  -webkit-animation-name: fadeInUp;
+  -moz-animation-name: fadeInUp;
+  -o-animation-name: fadeInUp;
+  animation-name: fadeInUp; }
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  -moz-animation-name: fadeOut;
+  -o-animation-name: fadeOut;
+  animation-name: fadeOut; }
+
+@-webkit-keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0); }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(20px); } }
+
+@-moz-keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+    -moz-transform: translateY(0); }
+  100% {
+    opacity: 0;
+    -moz-transform: translateY(20px); } }
+
+@-o-keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+    -o-transform: translateY(0); }
+  100% {
+    opacity: 0;
+    -o-transform: translateY(20px); } }
+
+@keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0); }
+  100% {
+    opacity: 0;
+    transform: translateY(20px); } }
+
+.fadeOutDown, kds-stepper kds-steps-message.ng-leave, kds-stepper kds-step-loading.ng-leave {
+  -webkit-animation-name: fadeOutDown;
+  -moz-animation-name: fadeOutDown;
+  -o-animation-name: fadeOutDown;
+  animation-name: fadeOutDown; }
+
+div.layout-column {
+  /*padding-bottom: 30px; */
+}
+
+kds-stepper {
+  background: #fff;
+  -webkit-box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.2);
+  display: block;
+  padding: 0 !important;
+  position: relative;
+  overflow: hidden; }
+  kds-stepper.round kds-steps-wrapper {
+    border-radius: 10000px;
+    overflow: hidden;
+    position: relative; }
+  kds-stepper kds-steps-wrapper {
+    overflow: hidden !important;
+    position: relative !important;
+    display: block;
+    -webkit-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2); }
+    kds-stepper kds-steps-wrapper kds-step-item {
+      display: block;
+      padding: 18px 0;
+      position: relative !important;
+      cursor: pointer; }
+      kds-stepper kds-steps-wrapper kds-step-item.disabled {
+        color: rgba(0, 0, 0, 0.38); }
+        kds-stepper kds-steps-wrapper kds-step-item.disabled .md-fab {
+          background: rgb(176,190,197) !important; }
+        kds-stepper kds-steps-wrapper kds-step-item.disabled[disabled], kds-stepper kds-steps-wrapper kds-step-item.disabled[disabled] > * {
+          cursor: no-drop; }
+      kds-stepper kds-steps-wrapper kds-step-item.active {
+        color:#00BCD4;
+        font-weight: 400; }
+      kds-stepper kds-steps-wrapper kds-step-item:not(.active) {
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.5); }
+      kds-stepper kds-steps-wrapper kds-step-item:first-child {
+        padding-left: 24px;
+        overflow: hidden !important; }
+      kds-stepper kds-steps-wrapper kds-step-item:last-child {
+        padding-right: 16px;
+        overflow: hidden; }
+    kds-stepper kds-steps-wrapper .md-fab {
+      width: 28px !important;
+      height: 28px !important;
+      min-height: 24px;
+      margin-left: 24px; }
+      kds-stepper kds-steps-wrapper .md-fab md-icon {
+        width: 20px;
+        height: 20px;
+        display: block;
+        margin-top: 0px;
+        margin-left: -2px; }
+      kds-stepper kds-steps-wrapper .md-fab span {
+        display: block;
+        line-height: 30px; 
+        color:#fff;
+      }
+  kds-stepper kds-steps-content {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s; }
+    kds-stepper kds-steps-content md-content {
+      transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s; }
+    kds-stepper kds-steps-content kds-step {
+      width: 100%;
+      display: block;
+      padding: 24px;
+      /*&.ng-enter{
+        transform:translateX(100%);
+      }
+
+      &.ng-enter-active{
+        transform:translateX(0);
+      }
+
+      &.ng-leave{
+        transform:translateX(0);
+        position: absolute;
+      }
+      &.ng-leave-active{
+        transform:translateX(-100%);
+      }
+      */ }
+
+@keyframes kds-left {
+  from {
+    transform: translateX(100%); }
+  to {
+    transform: translateX(0); } }
+
+@keyframes kds-right {
+  from {
+    transform: translateX(-100%); }
+  to {
+    transform: translateX(0); } }
+
+@keyframes kds-left-leave {
+  from {
+    transform: translateX(0); }
+  to {
+    transform: translateX(-100%); } }
+
+@keyframes kds-right-leave {
+  from {
+    transform: translateX(0); }
+  to {
+    transform: translateX(100%); } }
+      kds-stepper kds-steps-content kds-step.kds-right {
+        transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+        animation: kds-right .5s; }
+        kds-stepper kds-steps-content kds-step.kds-right.ng-leave {
+          position: absolute;
+          top: 0;
+          animation: kds-right-leave .5s; }
+      kds-stepper kds-steps-content kds-step.kds-left {
+        transition: all cubic-bezier(0.94, 0.45, 0.46, 0.25) 0.5s;
+        animation: kds-left .5s; }
+        kds-stepper kds-steps-content kds-step.kds-left.ng-leave {
+          position: absolute;
+          top: 0;
+          animation: kds-left-leave .5s; }
+  kds-stepper kds-steps-message {
+    width: 100%;
+    height: 76px;
+    -webkit-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 3; }
+    kds-stepper kds-steps-message span {
+      padding-left: 24px;
+      font-weight: 400; }
+    kds-stepper kds-steps-message.ng-enter {
+      animation-duration: .5s;
+      -webkit-animation-duration: .5s;
+      -moz-animation-duration: .5s; }
+    kds-stepper kds-steps-message.ng-leave {
+      position: absolute;
+      animation-duration: .2s;
+      -webkit-animation-duration: .2s;
+      -moz-animation-duration: .2s; }
+  kds-stepper kds-step-loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.9); }

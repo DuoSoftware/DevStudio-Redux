@@ -1,0 +1,201 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,500,300italic,500italic,700italic,900,300);
+body {
+    font-family: "Roboto";
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    margin: 0px;
+    padding: 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: top left !important;
+    overflow: auto;
+}
+#uicontainer {
+    position: absolute;
+    overflow: auto;
+    height: 100%;
+}
+md-sidenav.md-locked-open {
+    min-width: 45px;
+    max-width: 45px;
+    height: 100%;
+}
+#toolboxControl {
+    left: -350px;
+    width: 300px;
+    height: 100%;
+    /*float: left;*/
+    position: fixed;
+    /*display: block;*/
+    background-color: white;
+    z-index: 21;
+    -webkit-box-shadow: 0 4px 20px lightgray;
+    -moz-box-shadow: 0 4px 20px lightgray;
+    box-shadow: 0 4px 20px lightgray;
+    overflow: hidden;
+}
+md-toolbar {
+    max-height: 48px !important;
+    min-height: 48px !important;
+}
+@-webkit-keyframes appear {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    80% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes disappear {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+#dashboardpage {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 30;
+}
+.dashboardLogo {
+    position: fixed;
+    z-index: 12;
+    top: 50vh;
+    left: 50vw;
+    animation: dashboardLogo-enter 1s 0.2s forwards;
+}
+@-webkit-keyframes dashboardLogo-enter {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(5);
+    }
+}
+@-webkit-keyframes dashboard-enter {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes dashboard-leave {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        border-radius: 100%;
+    }
+}
+@-webkit-keyframes dashboardpage-enter {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes dashboardpage-leave {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+#dashboardpage.ng-enter {
+    animation: dashboardpage-enter 0.5s forwards;
+}
+#dashboardpage.ng-leave {
+    animation: dashboardpage-leave 0.5s forwards;
+}
+.dashboardText {
+    font-family: Poiret One;
+    font-size: 20px;
+    margin: 40px;
+    opacity: 0;
+    animation: appear 0.5s 0.5s forwards;
+}
+.dashboard-content-box {
+    background-color: white;
+    margin: 10px;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 100;
+    border-radius: 5px;
+    color: darkslategrey;
+}
+#dashboardpageStarter {
+    position: fixed;
+    width: 300vw;
+    height: 300vw;
+    top: -150vw;
+    left: -150vw;
+    z-index: 10;
+    border-radius: 100%;
+    animation-fill-mode: forwards;
+}
+#dashboardpageStarter.ng-enter {
+    animation: dashboard-enter 1s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+#dashboardpageStarter.ng-leave {
+    animation: dashboard-leave 0.5s 0.5s forwards;
+}
+.dashboard-template.ng-enter {
+    animation: dashboard-enter 0.5s 0.5s forwards;
+}
+.dashboard-template.ng-leave {
+    animation: dashboard-leave 0.5s forwards;
+}
+.banner-title {
+    font-size: 35px;
+    width: 100%;
+    color: darkgrey;
+    text-align: center;
+}
+.full-width-height {
+    width: 100%;
+    height: 100%;
+}
+.round {
+    border-radius: 100%;
+}
+.dashboard-title {
+    color: whitesmoke;
+    margin: 5px;
+}
+#settingsicon {
+    line-height: 48px;
+    fill: lightgrey;
+}
+.md-button {
+    min-width: 5px !important;
+}

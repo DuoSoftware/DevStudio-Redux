@@ -1,0 +1,175 @@
+<style>
+/*step view common styles*/
+
+.multi-step-container{
+	width:100%;
+	height:100%;
+	overflow:auto;
+}
+
+#multi_step_content_container{
+		width:100%;
+		height:auto;
+}
+
+.multi_step_header{
+	width:960px;
+	height:60px;
+	background:#fff;
+	border-bottom:1px solid rgba(175,175,175,0.5);
+	box-sizing:border-box;
+}
+
+.multi_step_header i{
+	font-size:28px;
+	color:rgba(200,200,200,1);
+	margin-left:20px;
+}
+
+.multi_step_header span{
+	font-size:28px;
+	color:rgba(175,175,175,1);
+	margin-left:10px;
+}
+
+.multi_step_content{
+	width:960px;
+	height:auto;
+	background:#fff;
+}
+
+.subOptionsHeader{
+	color:rgba(175,175,175,1) !important;
+}
+
+.multi_step_footer{
+	width:960px;
+	height:60px;
+	background:#fff;
+	box-sizing:border-box;
+	border-top:1px solid rgba(175,175,175,0.5);
+	padding-left:20px;
+	padding-right:20px;
+}
+
+.sliding-steps main,
+.sliding-steps main .well {
+		min-height:100px;
+		margin: 0;
+}
+.sliding-steps main {
+		position: relative;
+		overflow-y:auto;
+		overflow-x:hidden;
+}
+
+.sliding-steps main .well {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+}
+
+.sliding-steps .form-step.ng-enter, .sliding-steps .form-step.ng-leave {
+		-webkit-transition: transform .5s ease-in-out;
+		transition: transform .5s ease-in-out;
+}
+.sliding-steps .step-forward .form-step.ng-enter {
+		transform: translateX(100%);
+}
+.sliding-steps .step-forward .form-step.ng-enter.ng-enter-active {
+		transform: translateX(0);
+}
+.sliding-steps .step-forward .form-step.ng-leave {
+		/*transform: translateX(100%);*/
+}
+.sliding-steps .step-forward .form-step.ng-leave.ng-leave-active {
+		transform: translateX(-100%);
+}
+
+.sliding-steps .step-backward .form-step.ng-enter {
+		transform: translateX(-100%);
+}
+.sliding-steps .step-backward .form-step.ng-enter.ng-enter-active {
+		transform: translateX(0);
+}
+.sliding-steps .step-backward .form-step.ng-leave {
+		/*transform: translateX(100%);*/
+}
+.sliding-steps .step-backward .form-step.ng-leave.ng-leave-active {
+		transform: translateX(100%);
+}
+
+.stepInnerViewContainer{
+	width:100%;
+	height:auto;
+	min-height:200px;
+}
+
+.projectTypeHolder{
+	width:100%;
+	height:auto;
+}
+
+.projectTypeSelection{
+	height:auto;
+	width:33.333333333%;
+}
+
+.projectTypeSeclectionInner{
+	width:100%;
+	height:150px;
+}
+
+.projectTypeSeclectionInner img{
+	padding:10px;
+	opacity:0.6;
+}
+
+.projectTypeSeclectionInner span{
+	margin-bottom:10px;
+}
+
+.projectTypeSpecificOptions{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+
+.sourceSelectionOptionsSection{
+	width:100%;
+	height:auto;
+}
+
+.sourceSectionCommon{
+	width:100%;
+	height:auto;
+}
+
+.sourceSectionCommon{
+	padding-bottom:15px;
+}
+
+</style>
+<div class="view_container">
+	<div class="view_App_wrapper" layout="column" layout-align="start start">
+		<multi-step-container steps="steps" layout="column" layout-align="start center" class="md-whiteframe-6dp sliding-steps simple-prev-next" search-id="'check'">
+				<div style="width:960px; height:auto; margin-top:48px; margin-bottom:48px;" class="md-whiteframe-6dp">
+					<div class="multi_step_header" layout="row" layout-align="start center">
+						<i ng-bind-template="{{$getActiveIndex()}}"></i>
+						<span ng-bind-template="{{$getActiveStep().title}}"></span>
+					</div>
+					<main class="multi_step_content" step-container></main>
+					<div class="multi_step_footer" layout="row" layout-align="space-between center">
+						<md-button class="md-primary" ng-disabled="$isFirst()" ng-click="$previousStep()">
+							<md-icon md-svg-icon="icons/ic_keyboard_arrow_left_24px.svg"></md-icon>
+							Previous
+						</md-button>
+						<md-button class="md-primary" ng-disabled="$isLast()" ng-click="$nextStep()">
+							Next
+							<md-icon md-svg-icon="icons/ic_keyboard_arrow_right_24px.svg"></md-icon>
+						</md-button>
+					</div>
+				</div>
+		</multi-step-container>
+	</div>
+</div>

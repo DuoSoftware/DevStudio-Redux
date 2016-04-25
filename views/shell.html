@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <!-- manifest="DuoWorld Dev Studio v1.0.0.0" xmlns='http://www.w3.org/1999/xhtml' xmlns:v="urn:schemas-microsoft-com:vml" -->
+      <title>DuoWord DevStudio</title>
+      <link rel="shortcut icon" href="images/smoothflow-icon.ico">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
+      <link rel="stylesheet" type="text/css" href="bower_components/colorifyjs/styles/colorify.css">
+  		<link rel="stylesheet" type="text/css" href="views/styles/main.css" />
+      <link rel="stylesheet" type="text/css" href="views/styles/directiveStyling.css" />
+  		<link rel="stylesheet" type="text/css" href="views/styles/refactoredStyles.css" />
+      <link rel="stylesheet" type="text/css" href="views/styles/kds-stepper.css" />
+  		<link rel="stylesheet" type="text/css" href="views/styles/tree-control.css" />
+  		<link rel="stylesheet" type="text/css" href="views/styles/tree-control-attribute.css" />
+      <link rel="stylesheet" type="text/css" href="bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.css" />
+  </head>
+
+  <body ng-app="shellApp" ng-controller="shellController" layout="row" layout-fill flex>
+
+      <div id="dev-portal-app-container">
+        <div id="dev-portal-nav-container" layout="column" layout-align="start center">
+          <div id="dev-portal-logo-container" ng-click="">
+            <img src="views/images/devStudioLogo.png" width="40" height="40">
+          </div>
+          <div id="nav-btn-container" ng-repeat="nav in menu">
+            <md-button class="md-accent" ng-click="navigateView($index, $event)">
+              <md-icon md-svg-icon="icons/ic_{{nav.icon}}_24px.svg" md-menu-align-target></md-icon>
+              <md-tooltip md-direction="right">{{nav.title}}</md-tooltip>
+            </md-button>
+          </div>
+        </div>
+        <div id="dev-portal-view-container">
+          <div id="view-common-banner"></div>
+          <div id="view-common-partial-container" class="dev-portal-views" ui-view><div>
+        </div>
+      </div>
+
+  		<script type="text/javascript">window.devportal = {partials:{}};</script>
+
+  		<script type="text/javascript" src="/runtime_profiles/environ.js"></script>
+
+  		<script type="text/javascript" src="views/js/less.min.js"></script>
+
+  		<script type="text/javascript" src="views/js/filetypes.min.js"></script>
+
+      <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+      <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+      <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+      <script type="text/javascript" src="bower_components/angular-aria/angular-aria.js"></script>
+      <script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
+      <script type="text/javascript" src="bower_components/angular-messages/angular-messages.min.js"></script>
+      <script type="text/javascript" src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+      <script type="text/javascript" src="bower_components/ng-img-crop/compile/unminified/ng-img-crop.js"></script>
+      <script type="text/javascript" src="bower_components/angular-multi-step-form/dist/browser/angular-multi-step-form.js"></script>
+      <script type="text/javascript" src="bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.js"></script>
+      <script type="text/javascript" src="views/js/color-thief.js"></script>
+      <script type="text/javascript" src="views/js/coloradapter.js"></script>
+      <script type="text/javascript" src="views/js/angular-tree-control.js"></script>
+      <script type="text/javascript" src="views/js/kds-stepper.js"></script>
+
+      <!-- <script type="text/javascript" src="js/app.js"></script> -->
+      <script type="text/javascript" src="views/js/readmoredirective.js"></script>
+
+  		<script type="text/javascript" src="views/js/ace/ace.js"></script>
+  		<script type="text/javascript" src="views/js/ace/ext-modelist.js"></script>
+  		<script type="text/javascript" src="views/js/ace/ext-language_tools.js"></script>
+  		<script type="text/javascript" src="views/js/ui-ace.min.js"></script>
+
+  		<script type="text/javascript" src="views/js/mousetrap.min.js"></script>
+  		<script type="text/javascript" src="views/js/hotkeys.js"></script>
+
+  		<script type="text/javascript" src="/uimicrokernel/uimicrokernel.js"></script>
+  		<script type="text/javascript" src="views/js-core/proxy.js"></script>
+
+  		<script type="text/javascript" src="views/partials/home/home.js"></script>
+  		<script type="text/javascript" src="views/partials/create/create.js"></script>
+  		<script type="text/javascript" src="views/partials/edit/edit.js"></script>
+  		<script type="text/javascript" src="views/partials/run/run.js"></script>
+  		<script type="text/javascript" src="views/partials/test/test.js"></script>
+      <script type="text/javascript" src="views/partials/projectdetail/projectdetail.js"></script>
+  		<script type="text/javascript" src="views/partials/publish/publish.js"></script>
+  		<script type="text/javascript" src="views/partials/share/share.js"></script>
+  		<script type="text/javascript" src="views/partials/desc/desc.js"></script>
+  		<script type="text/javascript" src="views/partials/newfile/newfile.js"></script>
+  		<script type="text/javascript" src="views/partials/newsnippet/newsnippet.js"></script>
+  		<script type="text/javascript" src="views/partials/bundle/bundle.js"></script>
+      <script type="text/javascript" src="views/partials/stepper/stepper.js"></script>
+      <script type="text/javascript" src="views/partials/createold/createold.js"></script>
+      <script type="text/javascript" src="views/js-core/shell.js"></script>
+  </body>
+</html>
