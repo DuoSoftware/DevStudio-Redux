@@ -1,33 +1,88 @@
 (function (_m){
 
 	window.devportal.controller = _m;
-	window.devportal.categories = ["Books & Reference",
-"Business",
-"Comics",
-"Communication",
-"Education",
-"Entertainment",
-"Finance",
-"Health & Fitness",
-"Libraries & Demo",
-"Lifestyle",
-"Live Wallpaper",
-"Media & Video",
-"Medical",
-"Music & Audio",
-"News & Magazines",
-"Personalization",
-"Photography",
-"Productivity",
-"Shopping",
-"Social",
-"Sports",
-"Tools",
-"Transportation",
-"Travel & Local",
-"Weather",
-"Widgets"
-];
+
+	window.devportal.categories = [
+	  {
+	    name: "Finance",
+	    description: "1",
+		imageUrl: "attach_money"
+	  },
+	  {
+	    name: "Human Resource Management",
+	    description: "1",
+		imageUrl: "people"
+	  },
+	  {
+	    name: "Production ",
+	    description: "1",
+		imageUrl: "local_shipping"
+	  },
+	  {
+	    name: "Operations Management",
+	    description: "1",
+		imageUrl: "settings_applications"
+	  },
+	  {
+	    name: "Sales & Marketing",
+	    description: "1",
+		imageUrl: "trending_up"
+	  },
+	  {
+	    name: "Legal",
+	    description: "1",
+		imageUrl: "gavel"
+	  },
+	  {
+	    name: "Social Media",
+	    description: "1",
+		imageUrl: "share"
+	  },
+	  {
+	    name: "Business Intelligence",
+	    description: "1",
+		imageUrl: "business"
+	  },
+	  {
+	    name: "Subscription and Billing",
+	    description: "1",
+		imageUrl: "subscriptions"
+	  },
+	  {
+	    name: "Other",
+	    description: "1",
+		imageUrl: "apps"
+	  }
+	];
+
+
+// 	window.devportal.categories = ["Books & Reference",
+// "Business",
+// "Comics",
+// "Communication",
+// "Education",
+// "Entertainment",
+// "Finance",
+// "Health & Fitness",
+// "Libraries & Demo",
+// "Lifestyle",
+// "Live Wallpaper",
+// "Media & Video",
+// "Medical",
+// "Music & Audio",
+// "News & Magazines",
+// "Personalization",
+// "Photography",
+// "Productivity",
+// "Shopping",
+// "Social",
+// "Sports",
+// "Tools",
+// "Transportation",
+// "Travel & Local",
+// "Weather",
+// "Widgets"
+// ];
 
 	//applicationinventory-card directive - start
 	_m.directive('applicationinventoryCard', function(){
@@ -289,4 +344,4 @@
         return { readAsDataUrl: readAsDataURL };
     }]);
 
-})(angular.module("shellApp", ["ui.router", "ui.ace", "treeControl", "ngAnimate","ngMaterial","ngMessages","ngMdIcons" ,"cfp.hotkeys", "devPortalLogic", "uiMicrokernel", "kds.stepper", "multiStepForm", "hm.readmore", "ngColorThief", "lfNgMdFileInput"]))
+})(angular.module("shellApp", ["ui.router", "ui.ace", "treeControl", "ngAnimate","ngMaterial","ngMessages","ngMdIcons" ,"cfp.hotkeys", "devPortalLogic", "uiMicrokernel", "kds.stepper", "hm.readmore", "lfNgMdFileInput"]))

@@ -1,5 +1,5 @@
 /**
- * Created by NDS on 18/12/2015.
+ * Created by Eshwaran Veerabahu on 22/03/2015.
  */
 //'use strict';
 angular.module('kds.stepper', ['ngMaterial'])
@@ -245,7 +245,7 @@ function KdsStepperWrapper() {
     template: function () {
       return '' +
         '<kds-step-item flex layout="row" layout-align="center center" ng-repeat="step in $kdsStepperCtrl.steps" ' +
-        'ng-disabled="$kdsStepperCtrl.isDisabled(this)" kds-step-done="true" ng-click="$kdsStepperCtrl.nextStepItem($event, this)"' +
+        'ng-disabled="$kdsStepperCtrl.isDisabled(this)" kds-step-done="true"' +
         'ng-class="{active: $index == $kdsStepperCtrl.currentStep, disabled: $index > $kdsStepperCtrl.currentStep+1}" md-ink-ripple="#aaa">' +
         '<md-button flex="none" class="md-fab md-mini md-primary"  md-no-ink  aria-label="{{step.attrs.kdsLabel}}"' +
         'ng-disabled="$kdsStepperCtrl.isDisabled(this)">' +

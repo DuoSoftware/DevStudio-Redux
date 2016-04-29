@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Finance",
+    "description": "1",
+	"imageUrl": "attach_money"
+  },
+  {
+    "name": "Human Resource Management",
+    "description": "1",
+	"imageUrl": "people"
+  },
+  {
+    "name": "Production ",
+    "description": "1",
+	"imageUrl": "local_shipping"
+  },
+  {
+    "name": "Operations Management",
+    "description": "1",
+	"imageUrl": "settings_applications"
+  },
+  {
+    "name": "Sales & Marketing",
+    "description": "1",
+	"imageUrl": "trending_up"
+  },
+  {
+    "name": "Legal",
+    "description": "1",
+	"imageUrl": "gavel"
+  },
+  {
+    "name": "Social Media",
+    "description": "1",
+	"imageUrl": "share"
+  },
+  {
+    "name": "Business Intelligence",
+    "description": "1",
+	"imageUrl": "business"
+  },
+  {
+    "name": "Subscription and Billing",
+    "description": "1",
+	"imageUrl": "subscriptions"
+  },
+  {
+    "name": "Other",
+    "description": "1",
+	"imageUrl": "apps"
+  }
+]

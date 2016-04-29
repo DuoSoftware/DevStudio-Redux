@@ -22,6 +22,7 @@
 
 		       		$retObj["name"] = $tempObject->name;
 		       		$retObj["description"] = $tempObject->description;
+		       		$retObj["projecttype"] = $tempObject->projecttype;
 		       		$retObj["folder"] = $tempFolder->getFilename();
 
 		            array_push($allProjects,  $retObj);

@@ -62,6 +62,10 @@
 			</div>
 		</div>
 		<div class="view_Content_section">
+			<div style="height:auto; width:300px; padding:10px; margin:0 auto; background:white;" class="loadInidcatorContainer md-whiteframe-6dp" layout="row" layout-align="start center" ng-show="projectRetrivelStatus">
+	            <md-progress-circular class="md-primary" md-mode="indeterminate" md-diameter="60"></md-progress-circular>
+	            <span>Loading projects, please wait...</span>
+	        </div>
 			<md-content class="custom_md-content md-padding" layout="row" layout-wrap>
 				<div ng-animate="" ng-repeat="project in projects | filter:searchProjects" class="app-inventory-card" flex-sm="50" flex-gt-sm="33" flex-gt-lg="25" layout="column">
 					<!-- <div applicationinventory-card appdata="app"></div> -->

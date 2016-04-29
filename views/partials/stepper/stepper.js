@@ -1,15 +1,33 @@
-window.devportal.partials.stepper = function($scope,$rootScope, $http, $dev, $state, $rootScope, $stateParams, $auth, $objectstore,$helpers, $fileReader){
+window.devportal.partials.stepper = function($scope, $auth, $dev, $state, $stateParams, $fileReader, $timeout){
 	
-	//wizard steps
-	$scope.wizardSteps = [
-		{'step':1,'steplabel':'project details','validity':false},
-		{'step':2,'steplabel':'project documentation','validity':false},
-		{'step':3,'steplabel':'project type','validity':false},
-		{'step':4,'steplabel':'complete setup','validity':false}
-	];
+	//wizard steps configuration
 
-	//wizard current step
+	$scope.templateScreen;
+
+	$scope.initializeProject = true;
+
+	//wizard step index
 	$scope.wizardCurrentStep = 1;
+
+	//new project data initialization variable
+	$scope.newProjectData = {
+		pdparams:{
+			projectType:"",
+			description:{},
+			requirements:{},
+			templates:{}
+		}
+	};
+
+	$scope.newProjectData.pdparams.requirements.owner = $auth.getUserName();
+
+	//project type configuration
+	$scope.projectTypes = [{typeName:"application",typeIcon:"views/images/math-compass.png",typeStyle:""},{typeName:"smoothflow",typeIcon:"views/images/smooth-flow.png",typeStyle:"opacity:0.35;"},{typeName:"bundle",typeIcon:"views/images/package-variant-closed.png",typeStyle:""}];
+
+
+	$scope.selectedprojectTypeCategory;
+
+	$scope.categoryTemplates;
 
 	//utility function start
 
@@ -26,94 +44,170 @@ window.devportal.partials.stepper = function($scope,$rootScope, $http, $dev, $st
 		//fetch project categories
 		$scope.appCategories = window.devportal.categories;
 
+		// fetching all project type categories
+		$dev.templates()
+			.categories()
+			.success(function(data){
+				$scope.projectTypeCategories = data;
+				console.log($scope.projectTypeCategories);
+			})
+			.error(function(data){
+				$scope.error = "";
+			});
+
 	//utility function end
-	
 
-	//initial hidden variable
-	$scope.projectTypeSelect = false;
+	$scope.fetchRelatedTemplates = function(category){
+		var tempcategoryobject = JSON.parse(category);
+		selectCategory(tempcategoryobject);
 
-	//project type selection variable
-	$scope.typeOptionSeclected = "Application";
+		$scope.templateScreen = tempcategoryobject.folder;
+		//folder fetch templates of category
+		$dev.templates()
+			.templates($scope.templateScreen)
+			.success(function(data){$scope.categoryTemplates = data; console.log(data)})
+			.error(function(data){$scope.error = "";});
+	};
 
-	$scope.initiatesource = false;
-	$scope.selectApplicationType = "";
+	//wizard initialization variables
+	$scope.isLoading = false;
 
-	$scope.projectCreationData = {};
+	// wizard forward navigation
+	$scope.stepForward = function() {
+	    $scope.isLoading = true;
+	    logProjectDetails();
+	    $timeout(function() {
+	      $scope.isLoading = false;
+	      $scope.myController.step = $scope.myController.step+1;
+	    }, 1000);
+  	};
+
+  	// wizard backward navigation
+  	$scope.stepBackward = function() {
+	    $scope.myController.step = $scope.myController.step-1;
+  	};
+
+  	var logProjectDetails = function(){
+  		console.log($scope.newProjectData);
+  	};
+
 
 	//available projects details
 	$scope.projects = {};
 
-	//project type view show
+	//contextView default
 
-	$scope.projectTypeView = "mainTypeView";
+	$scope.projInitContext = "projOptSelctView";
 
-	$scope.changeProjectTypeView = function(contextView){
-		$scope.projectTypeView = contextView;
+	$scope.switchProjInitContext = function(slctView){
+		$scope.projInitContext = slctView;
+	};
+
+	$scope.projectTypeSelect = function(optProject){
+		$scope.switchProjInitContext(optProject);
+		$scope.projectType = optProject;
 	};
 
 	//project types
-	$scope.projectTypes = ["template", "upload", "bundle"];
+	// $scope.projectTypes = ["template", "upload", "bundle"];
 
 	$scope.selectProjectType = function(type){
 		$scope.projectTypeSelect = true;
 		$scope.projectState.pdparams.templates.category = type;
 	};
 
-
-	var lsState = localStorage.getItem("createProjectState");
-	if (lsState) {
-		$scope.projectState = JSON.parse(lsState);
-	}
-	else {
-		$scope.projectState = {
-			state:"predevelop",
-			pdparams: { projectType:"template", description: {},requirements: {}, templates:{}}
-		};
-	}
-
-	$scope.$watch("projectState.pdparams.templates.category", function(){
-		if ($scope.projectState.pdparams.templates.category)
-		$dev.templates()
-			.templates($scope.projectState.pdparams.templates.category.folder)
-			.success(function(data){$scope.catTemplates = data;})
-			.error(function(data){$scope.error = "";});
-	});
-
-
-	//objectstore fetch template and category
-	$dev.templates()
-		.categories()
-		.success(function(data){$scope.categories = data;})
-		.error(function(data){$scope.error = "";});
 	
-
 	//wizard ui hook for category selection
-	$scope.selectCategory = function(cat){$scope.projectState.pdparams.templates.category = cat;}
+	var selectCategory = function(category){
+		$scope.newProjectData.pdparams.templates.category = category;
+	}
 
 	//wizard ui hook for template selection
-	$scope.selectTemplate = function(cat){$scope.projectState.pdparams.templates.template = cat;}
-
-
-	// $scope.$watch("projectState.pdparams.wpi", function(){
-	// 	if (!$scope.projectState.pdparams.wpi) $scope.projectState.pdparams.wpi = 0;
-	// 	$scope.projectState.pdparams.wizardPage = $scope.wizardPages[$scope.projectState.pdparams.wpi];
-	// 	localStorage.setItem("createProjectState", JSON.stringify($scope.projectState));
-	// });
+	$scope.selectTemplate = function(template){
+		$scope.newProjectData.pdparams.projectType = "template";
+		$scope.newProjectData.pdparams.templates.template = template;
+		$scope.initializeProject = false;
+		$scope.isLoading = true;
+	    $timeout(function() {
+	      $scope.isLoading = false;
+	      $scope.myController.step = $scope.myController.step+1;
+	    }, 1000);
+	}
 
 	$scope.getKeys = function(){
 		$dev.project()
-		.getKeys($scope.projectState.pdparams.description.title)
+		.getKeys($scope.newProjectData.pdparams.description.title)
 		.success(function(data){
-			$scope.projectState.pdparams.description.appKey = data.app;
-			$scope.projectState.pdparams.description.secretKey= data.secret;
+			$scope.newProjectData.pdparams.description.appKey = data.app;
+			$scope.newProjectData.pdparams.description.secretKey= data.secret;
 		})
 		.error(function(data){
 			$dev.dialog().alert ("Error getting app/secret keys");
 		});
 	}
 
-	$scope.displayProjectDetails = function(){
-		console.log($scope.projectState.pdparams);
-	}
+	$scope.submitnewprojectDetails = function(){
+		$dev.project()
+			.create($scope.newProjectData)
+			.success(function(data){
+				var key = $scope.newProjectData.pdparams.description.appKey
+			})
+	};
 
+	// watch for file upload
+
+	$scope.$watch('projectsourceupload.length',function(newVal,oldVal){
+		//todo implement upload validation here !
+		// if($scope.projectsourceupload === ){
+		// 	console.log('not yet bro');
+		// }else{
+		// 	$scope.newProjectData.pdparams.projectType = "upload";
+		// 	console.log('there !');
+		// }
+	});
+
+	$scope.imagePreview;
+
+	//test file upload
+	$scope.$watch('projectImage.length',function(newVal,oldVal){
+		console.log($scope.projectImage);
+		angular.forEach($scope.projectImage, function(obj){
+			$scope.imagePreview = obj;
+		});
+	});
+
+	$scope.finalizeCreateProject = function(){
+		
+		$dev.project()
+			.create($scope.newProjectData)
+			.success(function(data){
+				console.log(data);
+				var key = $scope.newProjectData.pdparams.description.appKey;
+		  //   	$dev.project().iconUpload(key,$scope.fileForm ? $scope.fileForm : "N/A").success(function(){
+		  //   		var ptype = $scope.projectState.pdparams.projectType;
+		  //   		switch (ptype){
+		  //   			case "upload":
+				// 			$dev.editor().upload(key, "/upload.zip", $scope.zipFileForm).success(function(){
+				// 				nav(key);
+				// 			}).error(function(){
+				// 				$dev.dialog().alert ("Error Uploading Zip File");
+				// 			});		
+		  //   				break;
+		  //   			default:
+		  //   				nav(key);
+		  //   				break;
+		  //   		}
+
+		  //   	}).error(function(){
+				// 	$dev.dialog().alert ("Error uploading icon");
+		  //   	});
+
+			})
+			.error(function(data){
+				// $dev.dialog().alert ("Error Creating Project");
+				// $scope.error = "";
+				alert('cant create project !');
+				console.log(data);
+			});
+	}
 }

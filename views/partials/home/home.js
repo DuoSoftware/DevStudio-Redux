@@ -33,6 +33,9 @@ window.devportal.partials.home = function($scope, $dev, $state, $mdDialog, $time
 	// 	}
 	// ];
 
+
+	$scope.projectRetrivelStatus = true;
+
 	//home page auto complete config data
 	$scope.simulateQuery = false;
 	$scope.isDisabled = false;
@@ -44,7 +47,7 @@ window.devportal.partials.home = function($scope, $dev, $state, $mdDialog, $time
 	//load all projects from the object store
 	$dev.project().all().success(function(data){
 		$scope.projects = data;
-		console.log($scope.projects);
+		$scope.projectRetrivelStatus = false;
 		$dev.states().setIdle();
 	}).error(function(data){
 		$dev.dialog().alert ("Error Retrieving all projects");

@@ -455,7 +455,7 @@
 			Flight::route("GET /project/download/@appKey/@filename", function ($appKey, $filename){ $this->download($appKey,$filename); });
 			Flight::route("POST /project/iconupload/@appKey", function ($appKey){ $this->appIconUpload($appKey); });
 
-			/////Bundling
+			/////
 			Flight::route("GET /project/getBundle/@appKey", function ($appKey){ $this->getAppBundle($appKey); });
 			Flight::route("POST /project/saveBundle/@appKey", function ($appKey){ $this->saveAppBundle($appKey); });
 

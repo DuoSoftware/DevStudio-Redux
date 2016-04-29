@@ -1,175 +1,355 @@
 <style>
-/*step view common styles*/
-
-.multi-step-container{
-	width:100%;
-	height:100%;
-	overflow:auto;
+.appViewHolder {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
 }
 
-#multi_step_content_container{
-		width:100%;
-		height:auto;
+.commonAppviewContainer {
+    position: relative;
+    top: 0;
+    left: 50%;
+    width: 960px;
+    height: auto;
+    background-color: #fff;
+    margin-left: -480px;
+    margin-top: 48px;
+    margin-bottom: 48px;
 }
 
-.multi_step_header{
-	width:960px;
-	height:60px;
-	background:#fff;
-	border-bottom:1px solid rgba(175,175,175,0.5);
-	box-sizing:border-box;
+.stepViewContainer {
+    width: 960px;
 }
 
-.multi_step_header i{
-	font-size:28px;
-	color:rgba(200,200,200,1);
-	margin-left:20px;
+.commonAppviewContainer footer{
+    width:100%;
+    height:48px;
 }
 
-.multi_step_header span{
-	font-size:28px;
-	color:rgba(175,175,175,1);
-	margin-left:10px;
-}
-
-.multi_step_content{
-	width:960px;
-	height:auto;
-	background:#fff;
-}
-
-.subOptionsHeader{
-	color:rgba(175,175,175,1) !important;
-}
-
-.multi_step_footer{
-	width:960px;
-	height:60px;
-	background:#fff;
-	box-sizing:border-box;
-	border-top:1px solid rgba(175,175,175,0.5);
-	padding-left:20px;
-	padding-right:20px;
-}
-
-.sliding-steps main,
-.sliding-steps main .well {
-		min-height:100px;
-		margin: 0;
-}
-.sliding-steps main {
-		position: relative;
-		overflow-y:auto;
-		overflow-x:hidden;
-}
-
-.sliding-steps main .well {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-}
-
-.sliding-steps .form-step.ng-enter, .sliding-steps .form-step.ng-leave {
-		-webkit-transition: transform .5s ease-in-out;
-		transition: transform .5s ease-in-out;
-}
-.sliding-steps .step-forward .form-step.ng-enter {
-		transform: translateX(100%);
-}
-.sliding-steps .step-forward .form-step.ng-enter.ng-enter-active {
-		transform: translateX(0);
-}
-.sliding-steps .step-forward .form-step.ng-leave {
-		/*transform: translateX(100%);*/
-}
-.sliding-steps .step-forward .form-step.ng-leave.ng-leave-active {
-		transform: translateX(-100%);
-}
-
-.sliding-steps .step-backward .form-step.ng-enter {
-		transform: translateX(-100%);
-}
-.sliding-steps .step-backward .form-step.ng-enter.ng-enter-active {
-		transform: translateX(0);
-}
-.sliding-steps .step-backward .form-step.ng-leave {
-		/*transform: translateX(100%);*/
-}
-.sliding-steps .step-backward .form-step.ng-leave.ng-leave-active {
-		transform: translateX(100%);
-}
-
-.stepInnerViewContainer{
-	width:100%;
-	height:auto;
-	min-height:200px;
-}
 
 .projectTypeHolder{
 	width:100%;
-	height:auto;
+	height:auto; 
 }
 
-.projectTypeSelection{
-	height:auto;
-	width:33.333333333%;
-}
-
-.projectTypeSeclectionInner{
+.projectTypeHolderHeader{
 	width:100%;
-	height:150px;
+	height:48px; 
 }
 
-.projectTypeSeclectionInner img{
-	padding:10px;
-	opacity:0.6;
+.projectTypeHolderContent{
+	width:100%; 
 }
 
-.projectTypeSeclectionInner span{
-	margin-bottom:10px;
-}
-
-.projectTypeSpecificOptions{
-	width:100%;
-	height:auto;
-	overflow:hidden;
+.applicationTypeSpecificOptions{
+	width:100%; 
 }
 
 .sourceSelectionOptionsSection{
-	width:100%;
-	height:auto;
+	width:100%; 
 }
 
-.sourceSectionCommon{
-	width:100%;
-	height:auto;
+.customSubHeader .md-subheader-inner{
+	padding-left:0px !important;
 }
 
-.sourceSectionCommon{
-	padding-bottom:15px;
+.newProjectSummary{
+    width:100%;
+    padding:0px; 
+}
+
+.newProjectSummary header{
+    width:100%;
+    height:auto;
+    padding:20px;   
+}
+
+.newProjectSummary header h3{
+    font-weight:300;
+    font-size:48px;
+    color:#00BCD4;
+    margin-left:20px;  
+}
+
+.projectSummaryRow{
+    width:100%;
+    height:auto;
+    min-height:24px;
+    margin-bottom:12px;
+    font-size:16px;
+}
+
+.projectSummaryRow span:nth-child(1){
+    color:grey;
+    display:block;
+    width:220px;
+    font-weight:300;  
+}
+
+.projectSummaryRow span:nth-child(2){
+    color:#00BCD4;
+    display:block;
+    width:calc(100%-220px);  
 }
 
 </style>
 <div class="view_container">
-	<div class="view_App_wrapper" layout="column" layout-align="start start">
-		<multi-step-container steps="steps" layout="column" layout-align="start center" class="md-whiteframe-6dp sliding-steps simple-prev-next" search-id="'check'">
-				<div style="width:960px; height:auto; margin-top:48px; margin-bottom:48px;" class="md-whiteframe-6dp">
-					<div class="multi_step_header" layout="row" layout-align="start center">
-						<i ng-bind-template="{{$getActiveIndex()}}"></i>
-						<span ng-bind-template="{{$getActiveStep().title}}"></span>
-					</div>
-					<main class="multi_step_content" step-container></main>
-					<div class="multi_step_footer" layout="row" layout-align="space-between center">
-						<md-button class="md-primary" ng-disabled="$isFirst()" ng-click="$previousStep()">
-							<md-icon md-svg-icon="icons/ic_keyboard_arrow_left_24px.svg"></md-icon>
-							Previous
-						</md-button>
-						<md-button class="md-primary" ng-disabled="$isLast()" ng-click="$nextStep()">
-							Next
-							<md-icon md-svg-icon="icons/ic_keyboard_arrow_right_24px.svg"></md-icon>
-						</md-button>
-					</div>
-				</div>
-		</multi-step-container>
+    <div class="view_App_wrapper">
+        <div class="appViewHolder">
+            <div class="commonAppviewContainer">
+                <kds-stepper is-loading="isLoading" loading-message="messages.loading" current-step="myController.step">
+                    <!-- Project creator step 1 (start) -->
+                    <kds-step label="project details" step-done="steps.projectDetails.done" message="Checking project details, please wait.">
+                        <div class="stepInnerViewContainer" layout="column" layout-align="start start">
+                            <md-content layout-padding style="width:100%;">
+                                <!-- <md-subheader class="md-primary">Specify Project Details</md-subheader> -->
+                                <form name="projectDetails">
+                                    <md-input-container class="md-block">
+                                        <label>Title</label>
+                                        <input ng-model="newProjectData.pdparams.description.title" md-maxlength="30" required md-no-asterisk name="projectTitle" ng-blur="getKeys()">
+                                        <div ng-messages="projectDetails.projectTitle.$error">
+                                          <div ng-message="required">Project title is required</div>
+                                          <div ng-message="md-maxlength">Project title has to be less than 30 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Project Key</label>
+                                            <input ng-model="newProjectData.pdparams.description.appKey" disabled>
+                                        </md-input-container>
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Secret Key</label>
+                                            <input ng-model="newProjectData.pdparams.description.secretKey" disabled>
+                                        </md-input-container>
+                                    </div>
+                                    <lf-ng-md-file-input style="margin-bottom:30px;" lf-files="projectImage" name="projectLogo" lf-required lf-filesize="150KB" lf-mimetype="image/*" lf-browse-label="Upload Image" lf-placeholder="Pick Image" lf-remove-label="Delete" lf-drag-and-drop-label="Drag and drop your project image here !" drag preview></lf-ng-md-file-input>
+                                    <div ng-messages="projectDetails.projectLogo.$error" style="color:red;">
+                                        <div ng-message="required">Please upload a project image.</div>
+                                        <div ng-message="filesize">Image size too large.</div>
+                                        <div ng-message="mimetype">This file is not accepted.</div>
+                                    </div> 
+                                    <md-input-container class="md-block">
+                                        <label>Category</label>
+                                        <md-select name="projectCategory" ng-model="newProjectData.pdparams.description.category" required>
+                                            <md-option ng-repeat="category in appCategories" value="{{category.name}}">{{category.name}}</md-option>
+                                        </md-select>
+                                        <div ng-messages="projectDetails.projectCategory.$error">
+                                          <div ng-message="required">Project category is required</div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container class="md-block">
+                                        <label>Project Description</label>
+                                        <textarea name="projectDescription" ng-model="newProjectData.pdparams.description.description" md-maxlength="300" rows="5" md-select-on-focus required></textarea>
+                                        <div ng-messages="projectDetails.projectDescription.$error">
+                                          <div ng-message="required">Project description is required</div>
+                                        </div>
+                                    </md-input-container>
+                                </form>
+                            </md-content>
+                            <footer layout="row" layout-align="end center">
+                                <md-button class="md-primary" ng-disabled="projectDetails.$invalid" ng-click="stepForward()">
+                                    Next
+                                    <md-icon md-svg-icon="icons/ic_keyboard_arrow_right_24px.svg"></md-icon>
+                                </md-button>
+                            </footer>
+                        </div>
+                    </kds-step>
+                    <!-- Project creator step 2 (start) -->
+                    <kds-step label="project documentation" step-done="steps.projectDocumentation.done" message="Attaching project documentation.">
+						<div class="stepInnerViewContainer" layout="column" layout-align="start center">
+							<md-content layout-padding style="width:100%;">
+							<md-subheader class="md-primary" style="padding-left: 0px !important;">Project Requirements</md-subheader>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Project Owner</label>
+                                <input ng-model="newProjectData.pdparams.requirements.owner" disabled>
+                            </md-input-container>
+							<md-input-container class="md-block">
+							  <label>Project Requirements Summary</label>
+							  <textarea ng-model="newProjectData.pdparams.requirements.desc" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+							</md-input-container>
+							<!-- <md-subheader class="md-primary" style="padding-left: 0px !important;">Project Documentation</md-subheader>
+							<lf-ng-md-file-input lf-files="files04" lf-browse-label="Upload Document"></lf-ng-md-file-input> -->
+							</md-content>
+                            <footer layout="row" layout-align="space-between center">
+                                <md-button class="md-primary" ng-click="stepBackward()">
+                                    <md-icon md-svg-icon="icons/ic_keyboard_arrow_left_24px.svg"></md-icon>
+                                    Previous
+                                </md-button>
+                                <md-button class="md-primary" ng-click="stepForward()">
+                                    Next
+                                    <md-icon md-svg-icon="icons/ic_keyboard_arrow_right_24px.svg"></md-icon>
+                                </md-button>
+                            </footer>
+						</div>
+			        </kds-step>
+					<!-- Project creator step 3 (start) -->			        
+			        <kds-step label="initialize project" step-done="steps.initializeProject.done" message="Initializing project with selected configuration.">
+                        <div class="stepInnerViewContainer" layout="column" layout-align="start start">
+                            <md-content style="width:100%;" ng-switch on="projInitContext">
+                                <div ng-switch-when="projOptSelctView" class="projectTypeHolder" layout="row" layout-align="center center">
+                                    <md-button flex class="projectTypeSelection md-primary" ng-repeat="type in projectTypes" ng-click="projectTypeSelect(type.typeName)">
+                                        <div class="projectTypeSeclectionInner" layout="column" layout-align="center center">
+                                            <img ng-src="{{type.typeIcon}}" width="128" height="128" style="{{type.typeStyle}}" />
+                                            <span>{{type.typeName}}</span>
+                                        </div>
+                                    </md-button>
+                                </div>
+                                <div ng-switch-when="application" class="projectTypeHolder" layout="column" layout-align="start start">
+                                	<div class="projectTypeHolderHeader" layout="row" layout-align="start center">
+                                		<md-button class="md-accent" aria-label="Back to project types" ng-click="switchProjInitContext('projOptSelctView')"><md-icon md-svg-icon="icons/ic_chevron_left_24px.svg"></md-icon>Back</md-button>
+                                	</div>
+                                	<md-subheader class="md-primary customSubHeader">Initiate your project by using a pre-built template.</md-subheader>
+                                	<div class="projectTypeHolderContent" layout="column" layout-align="start start">
+                                		<md-input-container class="md-block" style="width:100%;">
+                                            <label>Application Category</label>
+                                            <md-select name="selectApplicationSubType" ng-model="selectedprojectTypeCategory" ng-change="fetchRelatedTemplates(selectedprojectTypeCategory)">
+                                            	<md-option ng-repeat="category in projectTypeCategories | filter:projectType" value="{{category}}">{{category.name}}</md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                        <div ng-switch on="templateScreen" class="applicationTypeSpecificOptions">
+	                                        <div ng-switch-when="duosdk" class="sourceSectionCommon templateSection" layout="row" layout-align="start start">
+	                                            <md-button flex class="md-primary" ng-repeat="template in categoryTemplates" ng-click="selectTemplate(template)">
+                                                  <div layout="column" layout-align="center center">
+                                                    <img ng-src="{{template.imageUrl}}" width="128" height="128" style="padding:10px;"/>
+                                                    <span>{{template.name}}<span>
+                                                  </div>
+                                                </md-button>
+                                           	</div>
+                                           	<div ng-switch-when="html5" class="sourceSectionCommon templateSection" layout="row" layout-align="start start">
+	                                            <md-button flex class="md-primary" ng-repeat="template in categoryTemplates" ng-click="selectTemplate(template)">
+                                                  <div layout="column" layout-align="center center">
+                                                    <img ng-src="{{template.imageUrl}}" width="128" height="128" style="padding:10px;"/>
+                                                    <span>{{template.name}}<span>
+                                                  </div>
+                                                </md-button>
+                                           	</div>
+                                        </div>
+                                	</div>
+                                	<md-subheader class="md-primary customSubHeader">Or by uploading project source files.</md-subheader>
+                                	<div class="projectTypeHolderContent" layout="column" layout-align="start start">
+                                		<lf-ng-md-file-input style="margin-bottom:30px; width:100%;" lf-files="projectsourceupload" lf-browse-label="Upload Files" lf-placeholder="Upload Files" lf-remove-label="Delete" lf-drag-and-drop-label="Drag and drop your project files here !" drag preview progress></lf-ng-md-file-input>
+                                	</div>
+                                </div>
+                                <div ng-switch-when="smoothflow" class="projectTypeHolder" layout="column" layout-align="start start">
+                                	<div class="projectTypeHolderHeader" layout="row" layout-align="start center">
+                                		<md-button class="md-accent" aria-label="Back to project types" ng-click="switchProjInitContext('projOptSelctView')"><md-icon md-svg-icon="icons/ic_chevron_left_24px.svg"></md-icon>Back</md-button>
+                                	</div>
+                                	<md-subheader class="md-primary customSubHeader">Initiate your project by using a pre-built template.</md-subheader>
+                                	<div class="projectTypeHolderContent" layout="column" layout-align="start start">
+                                		<md-input-container class="md-block" style="width:100%;">
+                                            <label>Smoothflow Category</label>
+                                            <md-select name="selectApplicationSubType" ng-model="selectedprojectTypeCategory" ng-change="fetchRelatedTemplates(selectedprojectTypeCategory)">
+                                                <md-option ng-repeat="category in projectTypeCategories | filter:projectType" value="{{category}}">{{category.name}}</md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                        <div ng-switch on="templateScreen" class="applicationTypeSpecificOptions">
+                                           	<div ng-switch-when="smoothflow" class="sourceSectionCommon templateSection" layout="row" layout-align="start start">
+		                                        <md-button flex class="md-primary" ng-repeat="template in categoryTemplates" ng-click="selectTemplate(template)">
+	                                              <div layout="column" layout-align="center center">
+	                                                <img ng-src="{{template.imageUrl}}" width="128" height="128" style="padding:10px;"/>
+	                                                <span>{{template.name}}<span>
+	                                              </div>
+	                                            </md-button>
+                                           	</div>
+                                        </div>
+                                	</div>
+                                	<md-subheader class="md-primary customSubHeader">Or by uploading project source files.</md-subheader>
+                                	<div class="projectTypeHolderContent" layout="column" layout-align="start start">
+                                		<lf-ng-md-file-input style="margin-bottom:30px; width:100%;" lf-files="projectsourceupload" lf-browse-label="Upload Files" lf-placeholder="Upload Files" lf-remove-label="Delete" lf-drag-and-drop-label="Drag and drop your project files here !" drag preview progress></lf-ng-md-file-input>
+                                	</div>
+                                </div>
+                                <div ng-switch-when="bundle" class="projectTypeHolder" layout="column" layout-align="start start">
+                                	<div class="projectTypeHolderHeader" layout="row" layout-align="start center">
+                                		<md-button class="md-accent" aria-label="Back to project types" ng-click="switchProjInitContext('projOptSelctView')"><md-icon md-svg-icon="icons/ic_chevron_left_24px.svg"></md-icon>Back</md-button>
+                                	</div>
+                                	<md-subheader class="md-primary customSubHeader">Select projects you wish to add to your bundle.</md-subheader>
+                                	<div class="projectTypeHolderContent" layout="column" layout-align="start start">
+                                        <div style="height:auto; width:auto; padding:10px; margin:0 auto;" class="loadInidcatorContainer md-whiteframe-6dp" layout="row" layout-align="start center" ng-show="projectRetrivelStatus">
+                                            <md-progress-circular class="md-primary" md-mode="indeterminate" md-diameter="60"></md-progress-circular>
+                                            <span>Loading projects, please wait...</span>
+                                        </div>
+                                		<md-list style="width:100%;">
+                                			<md-list-item ng-repeat="application in projects">
+											    <img alt="{{ application.name }}" ng-src="appicons/{{application.appKey}}.png" class="md-avatar" />
+											    <p>{{ application.name }}</p>
+											    <md-switch class="md-primary" ng-model="appBundle.apps[application.appKey]"></md-switch>
+											</md-list-item>
+                                		</md-list>
+                                	</div>
+                                </div>
+                            </md-content>
+                            <footer layout="row" layout-align="space-between center">
+                                <md-button class="md-primary" ng-click="stepBackward()">
+                                    <md-icon md-svg-icon="icons/ic_keyboard_arrow_left_24px.svg"></md-icon>
+                                    Previous
+                                </md-button>
+                                <md-button class="md-primary" ng-click="stepForward()" ng-disabled="initializeProject">
+                                    Next
+                                    <md-icon md-svg-icon="icons/ic_keyboard_arrow_right_24px.svg"></md-icon>
+                                </md-button>
+                            </footer>
+                        </div>
+                    </kds-step>
+			        <!-- Project creator step 4 (start) -->
+			        <kds-step label="create project" step-done="steps.createProject.done" message="Creating project please wait.">
+			        	<div class="stepInnerViewContainer" layout="column" layout-align="start center">
+						    <md-content layout-padding style="width:100%;">
+						        <md-subheader class="md-primary">Project Summary</md-subheader>
+                                <div class="newProjectSummary" layout="column" layout-align="start start">
+                                    <header layout="row" layout-align="start center">
+                                        <img ng-src="{{imagePreview.lfDataUrl}}" width="120" height="120"/>
+                                        <h3>{{newProjectData.pdparams.description.title}}</h3>
+                                    </header>
+                                    <content layout="column" layout-align="start start" style="padding-left:20px;">
+                                        <div class="projectSummaryRow" layout="row" layout-align="start start">
+                                            <span>Project Owner</span>
+                                            <span>: {{newProjectData.pdparams.requirements.owner}}</span>
+                                        </div>
+                                        <div class="projectSummaryRow" layout="row" layout-align="start start">
+                                            <span>Project Key</span>
+                                            <span>: {{newProjectData.pdparams.description.appKey}}</span>
+                                        </div>
+                                        <div class="projectSummaryRow" layout="row" layout-align="start start">
+                                            <span>Secret Key</span>
+                                            <span>: {{newProjectData.pdparams.description.secretKey}}</span>
+                                        </div>
+                                        <div class="projectSummaryRow" layout="row" layout-align="start start">
+                                            <span>Project Category</span>
+                                            <span>: {{newProjectData.pdparams.description.category}}</span>
+                                        </div>
+                                        <div class="projectSummaryRow" layout="row" layout-align="start start">
+                                            <span>Project Description</span>
+                                            <span>: {{newProjectData.pdparams.description.description}}</span>
+                                        </div>
+                                        <div class="projectSummaryRow" layout="row" layout-align="start start">
+                                            <span>Project Type</span>
+                                            <span>: {{projectType}}</span>
+                                        </div>
+                                        <div class="projectSummaryRow" layout="row" layout-align="start start">
+                                            <span>Project Initiation Method</span>
+                                            <span>: {{newProjectData.pdparams.projectType}}</span>
+                                        </div>
+                                        {{newProjectData.pdparams}}
+                                    </content>
+                                </div>
+						    </md-content>
+                            <footer layout="row" layout-align="space-between center">
+                                <md-button class="md-primary" ng-click="stepBackward()">
+                                    <md-icon md-svg-icon="icons/ic_keyboard_arrow_left_24px.svg"></md-icon>
+                                    Previous
+                                </md-button>
+                                <md-button class="md-primary" ng-click="finalizeCreateProject()">
+                                    proceed
+                                    <md-icon md-svg-icon="icons/ic_done_24px.svg"></md-icon>
+                                </md-button>
+                            </footer>
+						</div>
+			        </kds-step>
+			    </kds-stepper>
+			</div>
+		</div>
 	</div>
 </div>
